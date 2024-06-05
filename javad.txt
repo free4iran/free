@@ -1,0 +1,162 @@
+{
+    "remarks":  "🇩🇪-Javad_K2000-H1",
+    "log":  {
+                "access":  "",
+                "error":  "",
+                "loglevel":  "warning"
+            },
+    "inbounds":  [
+                     {
+                         "tag":  "socks",
+                         "port":  10808,
+                         "listen":  "127.0.0.1",
+                         "protocol":  "socks",
+                         "sniffing":  {
+                                          "enabled":  true,
+                                          "destOverride":  [
+                                                               "http",
+                                                               "tls"
+                                                           ],
+                                          "routeOnly":  false
+                                      },
+                         "settings":  {
+                                          "auth":  "noauth",
+                                          "udp":  true,
+                                          "allowTransparent":  false
+                                      }
+                     },
+                     {
+                         "tag":  "http",
+                         "port":  10809,
+                         "listen":  "127.0.0.1",
+                         "protocol":  "http",
+                         "sniffing":  {
+                                          "enabled":  true,
+                                          "destOverride":  [
+                                                               "http",
+                                                               "tls"
+                                                           ],
+                                          "routeOnly":  false
+                                      },
+                         "settings":  {
+                                          "auth":  "noauth",
+                                          "udp":  true,
+                                          "allowTransparent":  false
+                                      }
+                     }
+                 ],
+    "outbounds":  [
+                      {
+                          "tag":  "proxy",
+                          "protocol":  "vless",
+                          "settings":  {
+                                           "vnext":  [
+                                                         {
+                                                             "address":  "zula.ir",
+                                                             "port":  2095,
+                                                             "users":  [
+                                                                           {
+                                                                               "id":  "8cdb4b7a-6a04-4dff-976c-f375cbfd43a1",
+                                                                               "alterId":  0,
+                                                                               "email":  "t@t.tt",
+                                                                               "security":  "auto",
+                                                                               "encryption":  "none",
+                                                                               "flow":  ""
+                                                                           }
+                                                                       ]
+                                                         }
+                                                     ]
+                                       },
+                          "streamSettings":  {
+                                                 "network":  "ws",
+                                                 "wsSettings":  {
+                                                                    "path":  "/telee",
+                                                                    "headers":  {
+                                                                                    "Host":  "cloudmehranmmdv1ray.v3rayng6.6.6.6.ir.Com.Site.xn--fhq0la447aac5504dea701axr1g.MahDi3Mm.onliNe."
+                                                                                }
+                                                                },
+                                                 "sockopt":  {
+                                                                 "dialerProxy":  "fragment",
+                                                                 "tcpKeepAliveIdle":  100,
+                                                                 "mark":  255,
+                                                                 "tcpNoDelay":  true
+                                                             }
+                                             }
+                      },
+                      {
+                          "tag":  "fragment",
+                          "protocol":  "freedom",
+                          "settings":  {
+                                           "domainStrategy":  "AsIs",
+                                           "fragment":  {
+                                                            "packets":  "1-5",
+                                                            "length":  "100-150",
+                                                            "interval":  "1-5"
+                                                        }
+                                       },
+                          "streamSettings":  {
+                                                 "sockopt":  {
+                                                                 "tcpNoDelay":  true,
+                                                                 "tcpKeepAliveIdle":  100
+                                                             }
+                                             }
+                      },
+                      {
+                          "tag":  "direct",
+                          "protocol":  "freedom",
+                          "settings":  {
+
+                                       }
+                      },
+                      {
+                          "tag":  "block",
+                          "protocol":  "blackhole",
+                          "settings":  {
+                                           "response":  {
+                                                            "type":  "http"
+                                                        }
+                                       }
+                      }
+                  ],
+    "routing":  {
+                    "domainStrategy":  "AsIs",
+                    "rules":  [
+                                  {
+                                      "type":  "field",
+                                      "inboundTag":  [
+                                                         "api"
+                                                     ],
+                                      "outboundTag":  "api",
+                                      "enabled":  true
+                                  },
+                                  {
+                                      "id":  "5465425548310166497",
+                                      "type":  "field",
+                                      "outboundTag":  "direct",
+                                      "domain":  [
+                                                     "domain:ir",
+                                                     "geosite:cn"
+                                                 ],
+                                      "enabled":  true
+                                  },
+                                  {
+                                      "id":  "5425034033205580637",
+                                      "type":  "field",
+                                      "outboundTag":  "direct",
+                                      "ip":  [
+                                                 "geoip:private",
+                                                 "geoip:cn",
+                                                 "geoip:ir"
+                                             ],
+                                      "enabled":  true
+                                  },
+                                  {
+                                      "id":  "5627785659655799759",
+                                      "type":  "field",
+                                      "port":  "0-65535",
+                                      "outboundTag":  "proxy",
+                                      "enabled":  true
+                                  }
+                              ]
+                }
+}
