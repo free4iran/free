@@ -1,3 +1,0 @@
-socks://Og==@192.168.2.80:2334?type=tcp&headerType=none&security=none#warp-home
-vless://abca6e54-58e4-41d0-ac68-8d6d4f6492eb@cpanel.com:2053?encryption=none&security=tls&sni=gerh.najiapp.top&alpn=h2%2Chttp%2F1.1&fp=chrome&type=ws&host=gerh.najiapp.top&path=%2Fnaji#%F0%9F%87%A9%F0%9F%87%AA-hamid
-vless://04099aff-b18e-49f6-822d-b6842da2ec6a@gerhv61.najiapp.top:55520?encryption=none&security=none&type=ws&path=%2F#%F0%9F%87%A9%F0%9F%87%AAV6-hamid
